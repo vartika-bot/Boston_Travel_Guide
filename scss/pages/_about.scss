@@ -1,0 +1,174 @@
+// About Page SCSS
+
+// About Hero Section
+.about-hero {
+    background-color: darken($hero-color, 10%);
+    padding: $base-spacing * 4 0;
+    .hero-content {
+        @extend %centered;
+        h1 {
+            font-size: 48px;
+            color: $secondary-color;
+        }
+        p {
+            font-size: 20px;
+            color: $text-color;
+        }
+    }
+}
+
+
+
+
+.history-section {
+    background-color: $secondary-color;
+    padding: $base-spacing * 4 0;
+
+    .container {
+        @include flexbox(row, space-between, center); 
+        gap: $base-spacing * 3; // Add spacing between the columns
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 $base-spacing;
+
+        @include flex-responsive; 
+    }
+
+    .image-column {
+        flex: 1 1 50%; 
+        img {
+            width: 100%; 
+            height: auto;
+            border-radius: 8px; // Rounded corners for the image
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+    }
+
+    .text-column {
+        flex: 1 1 50%; 
+        padding: $base-spacing * 2;
+
+        h2 {
+            @include typography(28px, bold, $primary-color); // Heading style
+            margin-bottom: $base-spacing;
+        }
+
+        p {
+            @include typography(16px, normal, $text-color); // Paragraph style
+        }
+    }
+}
+
+// Responsive adjustments for small screens
+@include respond('small') {
+    .history-section .container {
+        flex-direction: column; 
+        text-align: center; // Center-align the text and image
+    }
+
+    .image-column, .text-column {
+        flex: 1 1 100%; // Full-width columns on small screens
+        padding: $base-spacing;
+    }
+}
+
+// About Content Section
+.about-content {
+    background-color: $background-color;
+    padding: $base-spacing * 3 0;
+    .container {
+        .grid-layout {
+            @include grid-layout(2); // 2-column grid layout
+
+            .history, .culture, .landmarks, .education {
+                background-color: $secondary-color;
+                padding: $base-spacing;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+                h2 {
+                    color: $primary-color;
+                    margin-bottom: $base-spacing;
+                }
+                p {
+                    color: $text-color;
+                }
+            }
+        }
+    }
+}
+
+// Gallery Section with Grid Layout
+.gallery {
+    padding: $base-spacing * 3 0;
+    background-color: $secondary-color;
+    .container {
+        @extend %centered;
+        h2 {
+            color: $primary-color;
+        }
+        .gallery-grid {
+            @include grid-layout(4); // 4-column grid layout for images
+            img {
+                width: 300px;
+                height: 250px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+}
+
+// Responsive Media Queries
+
+// For medium screens (tablet devices)
+@include respond('medium') {
+    .about-hero {
+        .hero-content {
+            h1 {
+                font-size: 36px; // Reduce font size for tablets
+            }
+            p {
+                font-size: 18px; // Adjust text size
+            }
+        }
+    }
+
+    .about-content {
+        .grid-layout {
+            @include grid-layout(1); // Switch to 1-column layout on tablets
+        }
+    }
+
+    .gallery .gallery-grid {
+        @include grid-layout(2); // 2-column layout for gallery on tablets
+    }
+}
+
+// For small screens (mobile devices)
+@include respond('small') {
+    .about-hero {
+        .hero-content {
+            h1 {
+                font-size: 28px; // Further reduce font size for mobile
+            }
+            p {
+                font-size: 16px; // Adjust text size
+            }
+        }
+    }
+
+    .about-content {
+        .grid-layout {
+            @include grid-layout(1); // Keep 1-column layout for mobile
+        }
+    }
+
+    .gallery .gallery-grid {
+        @include grid-layout(1); 
+    }
+}
+
+
+
+

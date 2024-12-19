@@ -1,0 +1,37 @@
+// In scss/utils/_placeholders.scss
+
+%card {
+    background-color: $secondary-color;
+    padding: $base-spacing;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  %centered {
+    text-align: center;
+    margin: 0 auto;
+}
+
+%card-style {
+  background-color: $secondary-color;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+%grid-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // Three columns by default
+  gap: $base-spacing;
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr); // Two columns on medium screens
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // One column on small screens
+  }
+}

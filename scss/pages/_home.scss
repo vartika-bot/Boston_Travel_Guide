@@ -1,0 +1,234 @@
+@use 'sass:math';
+.about-content {
+    .grid-layout {
+        @include grid-layout(2); // Now the grid-layout mixin is available
+    }
+}
+  p {
+    @include typography();
+  }
+
+
+
+nav li {
+    margin-left: 20px; /* Use your base spacing variable */
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px; /* Use your base spacing variable */
+}
+
+
+.events-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Use your base spacing variable */
+}
+
+.event-item {
+    flex: 1 1 calc(50% - 20px);
+    box-sizing: border-box;
+}
+
+.hero{
+  h1 {
+    @include typography(36px, bold, 1.2, $primary-color);
+  }
+}
+.hero-content {
+    text-align: center;
+}
+
+
+.hero {
+   
+    background-color: $background-color;
+    color: $text-color;
+    height: 900px;
+    text-align: center;
+  }
+
+  .featured-attractions .grid {
+    @include responsive-grid(3);
+    margin-top: 10%;
+  }
+
+
+  
+
+.featured-attractions {
+  padding: $base-spacing * 2 0;
+
+  h2 {
+    text-align: center;
+    margin-bottom: $base-spacing * 2;
+    @include typography(32px, bold, 1.3, $text2-color);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $base-spacing;
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    gap: $base-spacing * 2; 
+    padding-bottom: $base-spacing; 
+  }
+
+  .attraction-card {
+    flex: 0 0 auto; 
+    width: 280px; 
+    margin-right: $base-spacing * 2; 
+    overflow: hidden;
+    text-align: center;
+    border-radius: 8px;
+    background-color: $secondary-color;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    }
+
+    img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
+    }
+
+    h3 {
+      margin-top: $base-spacing;
+      @include typography(24px, bold, 1.2, $primary-color);
+    }
+
+    p {
+      margin: $base-spacing 0;
+      @include typography(16px);
+    }
+
+    .btn-secondary {
+      @include button($accent-color, $secondary-color);
+      margin-bottom: $base-spacing;
+    }
+  }
+}
+
+// Media Queries for responsiveness
+@include respond('medium') {
+  .grid {
+    // flex-wrap: wrap; // Allow wrapping on medium screens
+    justify-content: center; // Center cards if they wrap
+  }
+
+  .attraction-card {
+    width: 45%; // Wider cards on medium screens
+    margin-bottom: 100%;
+
+  }
+}
+
+@include respond('small') {
+  .grid {
+    flex-direction: column; // Stack cards vertically on small screens
+  }
+
+  .attraction-card {
+    width: 100%; // Full-width cards on small screens
+    margin-right: 0; // Remove right margin for single column
+    margin-bottom: $base-spacing * 2; // Add spacing between stacked cards
+  }
+}
+  .about-boston{
+    padding: $base-spacing * 3 0;
+    background-color: $third-color;
+
+    h2 {
+        @include typography(32px, bold, 1.2, $text2-color);
+        text-align: center;
+        margin-bottom: $base-spacing * 2;
+    }
+  }
+ .upcoming-events {
+  
+    padding: $base-spacing * 3 0;
+    background-color: $background-color;
+
+    h2 {
+        @include typography(32px, bold, 1.2, $primary-color);
+        text-align: center;
+        margin-bottom: $base-spacing * 2;
+    }
+
+    p {
+        @include typography(18px, normal, 1.5, $text-color);
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .events-container {
+      display: flex; // Use flexbox to align items horizontally
+      justify-content: space-between; // Ensure space between the event cards
+      gap: $base-spacing * 2; // Add spacing between cards (customize spacing variable)
+      padding: $base-spacing * 2; // Padding inside the container
+      flex-wrap: wrap; // Ensure the cards wrap to a new row on smaller screens
+  }
+  
+  .event-item {
+      background-color: $secondary-color; // Customize your color variables
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+      width: calc(33.333% - $base-spacing); // 3 equal-width cards with space between them
+  
+      transition: transform 0.3s ease, box-shadow 0.3s ease; // Smooth transitions
+  
+      &:hover {
+          transform: translateY(-5px); // Lift up slightly on hover
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); // Stronger shadow on hover
+      }
+  
+      h1 {
+          font-size: 24px; // Customize as needed
+          margin-bottom: 10px;
+      }
+  
+      p {
+          font-size: 16px; // Customize text size
+          line-height: 1.5;
+      }
+  
+      a {
+          display: block;
+          color: $primary-color;
+          text-decoration: none;
+          font-weight: bold;
+          margin-top: 10px;
+  
+          &:hover {
+              color: darken($primary-color, 10%);
+          }
+      }
+  }
+  
+  // Responsive Adjustments
+  @include respond('small') {
+      .event-item {
+          width: 100%; // Full-width cards on small screens (stacked vertically)
+          margin-bottom: $base-spacing * 2;
+      }
+  }
+}
+
+

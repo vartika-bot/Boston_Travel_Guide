@@ -1,0 +1,42 @@
+/* styles.scss */
+
+/* Import variables and mixins first */
+@import 'variables';
+@import 'mixins';
+
+/* Import partials */
+@import 'components/header';
+@import 'components/footer';
+@import 'components/buttons';
+@import 'pages/home';
+@import 'pages/about';
+@import 'pages/attraction';
+@import 'pages/events';
+@import 'utils/placeholders.scss';
+
+/* Import other necessary partials */
+
+
+
+  /* Base styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+header, footer {
+    flex: 0 0 auto;
+}
+h1 {
+    @include typography(36px, bold, 1.2, $primary-color);
+  }

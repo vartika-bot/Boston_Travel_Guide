@@ -1,0 +1,83 @@
+// Footer SCSS
+footer {
+  background-color: $primary-color; // Use your primary color from variables
+  padding: $base-spacing * 3 0; // Padding for top and bottom
+  color: $secondary-color; // Text color from variables
+
+  .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 $base-spacing;
+  }
+
+  .footer-content {
+      display: flex;
+      justify-content: space-between; // Space between logo, navigation, and social media
+      align-items: center;
+      flex-wrap: wrap; // Ensure items wrap on smaller screens
+
+      .logo {
+          img {
+              max-width: 150px;
+          }
+      }
+
+      .footer-nav {
+          ul {
+              list-style: none;
+              display: flex;
+              gap: $base-spacing * 2;
+              margin: 0;
+              padding: 0;
+
+              li {
+                  a {
+                      @include typography(16px, normal, 1.5, $secondary-color);
+                      text-decoration: none;
+                      &:hover {
+                          color: lighten($secondary-color, 20%);
+                      }
+                  }
+              }
+          }
+      }
+
+      .social-media {
+          display: flex;
+          gap: $base-spacing; // Space between icons
+
+          a {
+              color: $secondary-color;
+              font-size: 24px;
+              transition: color 0.3s ease;
+
+              &:hover {
+                  color: lighten($secondary-color, 20%);
+              }
+          }
+      }
+  }
+
+  .footer-bottom {
+      text-align: center;
+      padding-top: $base-spacing * 2;
+      @include typography(14px, normal, 1.3, $secondary-color);
+  }
+}
+
+// Responsive for smaller screens
+@include respond('small') {
+  footer .footer-content {
+      flex-direction: column; // Stack items vertically
+      text-align: center;
+
+      .footer-nav ul {
+          flex-direction: column;
+          gap: $base-spacing;
+      }
+
+      .social-media {
+          margin-top: $base-spacing;
+      }
+  }
+}
